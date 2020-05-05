@@ -15,6 +15,15 @@
  */
 function exerciseOne(arrayOfPeople) {
   let content = document.querySelector("#content");
+  for (var i=0; i<arrayOfPeople.length; i++){
+    people = arrayOfPeople[i];
+    let h1div = document.createElement("h1");
+    let h2div = document.createElement("h2");
+    content.appendChild(h1div);
+    content.appendChild(h2div);
+    h1div.innerHTML = people.name;
+    h2div.innerHTML = people.job;
+  }
 }
 
 /**
@@ -26,6 +35,15 @@ function exerciseOne(arrayOfPeople) {
  */
 function exerciseTwo(shopping) {
   //Write your code in here
+  let content = document.querySelector("#content");
+  var unorderedList = document.createElement("ul");
+  content.appendChild(unorderedList);
+
+  for (var i = 0; i<shopping.length; i++){
+var itemOfList = document.createElement("li");
+itemOfList.innerHTML = shopping[i];
+unorderedList.appendChild(itemOfList);
+  }
 }
 
 /**
@@ -59,6 +77,36 @@ function exerciseTwo(shopping) {
 **/
 function exerciseThree(books) {
   //Write your code in here
+  var content = document.querySelector("#content");
+  var unorderedList = document.createElement("ul");
+ 
+  
+  content.appendChild(unorderedList);
+  for (var i = 0; i < books.length; i++) {
+    var book = books[i];
+    var listItem = document.createElement("li");
+    
+    var paragraph = document.createElement("p");
+    paragraph.innerText = book.title + " by " + book.author;
+    listItem.appendChild(paragraph);
+
+    var link = document.createElement("a");
+    link.href = book.cover;
+    var image = document.createElement("img");
+    image.src = book.cover;
+    link.appendChild(image);
+    listItem.appendChild(link);
+
+    if (book.alreadyRead) {
+      listItem.style.backgroundColor = "green";
+    }
+    else {
+      listItem.style.backgroundColor = "red";
+    }
+
+    unorderedList.appendChild(listItem);
+  }
+
 }
 
 //
