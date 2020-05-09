@@ -78,36 +78,45 @@ IF all the fields are valid, when you click **Submit** it should:
 
 **Important hint:** In your function that handles clicks on the `Submit` button you will need to call `event.preventDefault()` to stop the browser from refreshing the page. To read more on how to do this: https://developer.mozilla.org/en/docs/Web/API/Event/preventDefault
 */
+
+
 function partTwo() {
   var submitButton = document.querySelector("form .btn.btn-primary");
 
-  var formList = document.querySelectorAll(".form-group");
-
-  var emailInput = document.getElementById("exampleInputEmail1");
-
   submitButton.addEventListener("click", checkForm)
+}
 
-  function checkForm(event) {
-    for (var i = 0; i < formList.length; i++) {
-      var formlistItem = formList[i];
-      var isInputValid = true;
-      if (formlistItem.value.length == 0) {
-        formlistItem.style.borderColor = "red";
-        isInputValid = false;
-      } else if (!emailInput.value.includes("@")) {
-        emailInput.style.borderColor = "red";
-        isInputValid = false;
-      }
-    }
-    if (isInputValid) {
-      for (var i = 0; i < formList.length; i++) {
-        formlistItem = formList[i];
-        formlistItem = [];
-        formlistItem.style.borderColor = "ligthgrey";
-      }
-      alert("Thanks you for filling out the form!");
+function checkForm(event) {
+  var formList = document.querySelectorAll(".form-control");
+  var emailInput = document.getElementById("exampleInputEmail1");
+  var isInputValid = true;
+  for (var i = 0; i < formList.length; i++) {
+    var formlistItem = formList[i];
+
+    if (formlistItem.value.length == 0) {
+      formlistItem.style.borderColor = "red";
+      isInputValid = false;
+    } else if (!emailInput.value.includes("@")) {
+      emailInput.style.borderColor = "red";
+      isInputValid = false;
     }
   }
-  event.preventDefault();
-
+  if (isInputValid) {
+    for (var i = 0; i < formList.length; i++) {
+      var formlistItem = formList[i];
+      formlistItem = "";
+      formlistItem.style.borderColor = "lightgrey";
+    
+      
+  }
+  alert("Thanks you for filling out the form!");
 }
+event.preventDefault();
+}
+
+
+
+
+
+partTwo();
+
